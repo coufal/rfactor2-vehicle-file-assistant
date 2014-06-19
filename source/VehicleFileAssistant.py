@@ -60,8 +60,8 @@ class FileHandler():
 		
 	def list_to_file(self,content, fname):
 		f = open(self.output_dir+fname,'w')
-		for x in range(0,len(content)):
-			f.write(content[x]+"\n")	
+		for line in content:
+			f.write(line+"\n")	
 		f.close()
 
 	def parse_signup_list(self, allowed_classes):
@@ -181,9 +181,9 @@ class VehClassHandler:
 		return self.allowed_classes
 		
 	def findClassByName(self, veh_class_name):
-		for x in range(0,len(self.allowed_classes)):
-			if(self.allowed_classes[x].get_name() == veh_class_name):
-				return self.allowed_classes[x]
+		for allowed_class in self.allowed_classes:
+			if(allowed_class.get_name() == veh_class_name):
+				return allowed_class
 		raise Exception("vehicle class not found: "+veh_class_name)
 	
 	def car_nameIsAllowed(self, car_name, veh_class):		
@@ -200,8 +200,8 @@ class VehFileCreator:
 		fh=FileHandler(sign_up_list, class_list, template_dir, output_dir)
 		teams=fh.parse_signup_list(VehClassHandler(fh.parse_class_list()))
 
-		for x in range(0,len(teams)):
-			fh.create_veh_file(teams[x])
+		for team in teams:
+			fh.create_veh_file(team)
 		print("\nFinished successfully.")
 		
 	def print_startup_msg(self):
