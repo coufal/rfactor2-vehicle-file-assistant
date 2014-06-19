@@ -10,5 +10,11 @@ Livery=Filename2.dds
 
 Class=LMP1
 Car=Lola
+Team=Alternative Number Racing
+Livery=Filename4.dds
+Number=77
+
+Class=LMP1
+Car=Lola
 Team=Team Name Three
 Livery=Filename3.dds

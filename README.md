@@ -7,7 +7,8 @@ Useful to create skin packs for leagues or standalone mods
 ## Features 
 
 * automatically creates all files from easily editable lists
-* automatically assigns start numbers and supports offsets for different classes
+* automatically assigns start numbers, supports offsets for different classes
+* you can also assign numbers manually (either for all cars or just for some)
 * unlimited amount of classes, teams and cars per class
 * user defined in-game filters
 
@@ -27,34 +28,34 @@ For more details, simply run with the *-h* argument.
 
 The whole concept is fairly easy. First off all you create a class list file like this:
 
-> Name=GTE
-> Cars=Ferrari, Aston, BMW, Corvette, Porsche, Dodge
-> NumberOffset=100
-> CategoryPath=VWEC, GTE
-> Classes=VWEC, VWEC_GTE
-> 
-> Name=LMP1
-> Cars=Lola
-> NumberOffset=0
-> CategoryPath=VWEC, GTE
-> Classes=VWEC, VWEC_GTE
+	Name=GTE
+	Cars=Ferrari, Aston, BMW, Corvette, Porsche, Dodge
+	NumberOffset=100
+	CategoryPath=VWEC, GTE
+	Classes=VWEC, VWEC_GTE
+
+	Name=LMP1
+	Cars=Lola
+	NumberOffset=0
+	CategoryPath=VWEC, GTE
+	Classes=VWEC, VWEC_GTE
 
 Then you need to place the .veh files of the cars you want to use in your templates directory.
 Name these files like the cars in your class list (e.g. *Ferrari.veh*)
 
 Now you can add as many teams as you like in your team list, using this structure:
 
-> Class=GTE
-> Car=Ferrari
-> Team=Team Name 1
-> Livery=Filename1.dds
-> 
-> Class=LMP1
-> Car=Lola
-> Team=Team Name Three
-> Livery=Filename3.dds
->
-> [...]
+	Class=GTE
+	Car=Ferrari
+	Team=Team Name 1
+	Livery=Filename1.dds
+	 
+	Class=LMP1
+	Car=Lola
+	Team=Team Name Three
+	Livery=Filename3.dds
+	
+	[...]
 
 ## Prerequisites
 

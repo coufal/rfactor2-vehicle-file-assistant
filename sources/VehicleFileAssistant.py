@@ -76,6 +76,7 @@ class FileHandler():
 				car_name=lines[x].replace("Car=","")
 				if(not allowed_classes.car_nameIsAllowed(car_name, veh_class)):
 					raise Exception("unknown CarName: "+lines[x])
+					
 				#validate if corresponding veh file exist
 				if(not os.path.isfile("{}.veh".format(self.template_dir+car_name))):
 					raise Exception(("{}.veh template does not exist".format(self.template_dir+car_name)))	
@@ -85,8 +86,15 @@ class FileHandler():
 				
 			if(lines[x].startswith("Livery=")):
 				livery=lines[x].replace("Livery=","")
-				teams.append(Entry(teamName, veh_class, car_name, livery, veh_class.get_count()+1+veh_class.get_number_offset()))
-				veh_class.inc_count()		
+				
+				#start number
+				if(len(lines) > x+1 and lines[x+1].startswith("Number=")):
+					number=int(lines[x+1].replace("Number=",""))
+				else:
+					number=veh_class.get_start_number_counter()+1+veh_class.get_number_offset()
+					veh_class.inc_start_number_counter()
+					
+				teams.append(Entry(teamName, veh_class, car_name, livery, number))					
 			
 		return teams
 	
@@ -112,13 +120,13 @@ class VehClass:
 		self.number_offset=number_offset
 		self.category_path=category_path
 		self.filtername_classes=filtername_classes
-		self.count=0
+		self.start_number_counter=0
 		
-	def inc_count(self):
-		self.count+=1
+	def inc_start_number_counter(self):
+		self.start_number_counter+=1
 		
-	def get_count(self):
-		return self.count
+	def get_start_number_counter(self):
+		return self.start_number_counter
 		
 	def get_category_path(self):
 		return self.category_path
