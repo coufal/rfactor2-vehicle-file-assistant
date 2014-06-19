@@ -4,7 +4,7 @@ echo Running VehicleFileAssistant with example files
 echo Output will be stored in example/out/
 echo.
 
-python sources/VehicleFileAssistant.py example/teamList.txt example/classList.txt example/templates/ example/out/ 
+python source/VehicleFileAssistant.py example/teamList.txt example/classList.txt example/templates/ example/out/ 
 
 echo.
 pause
