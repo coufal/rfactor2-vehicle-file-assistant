@@ -1,8 +1,8 @@
 # rFactor2 Vehicle File Assistant
 
-Automatically creates new .veh files from a provided list of teams and template .veh files.
+Easy and automated creation of .veh(icle) files from a provided template by using short lists.
 
-Useful to create skin packs for leagues or standalone mods
+Useful when creating skin packs for addon content or leagues
 
 ## Features 
 
