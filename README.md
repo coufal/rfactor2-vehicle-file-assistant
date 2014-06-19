@@ -57,7 +57,7 @@ Now you can add as many teams as you like in your team list, using this structur
 	
 	[...]
 	
-To add a number for a certain car, just add the line *Numer=* after the *Livery=* line:
+To add a number for a certain car, just add the line *Number=* after the *Livery=* line:
 
 	Class=LMP1
 	Car=Lola
