@@ -1,5 +1,3 @@
-#example file
-
 Name=GTE
 Cars=Ferrari, Aston, BMW, Corvette, Porsche, Dodge
 NumberOffset=100

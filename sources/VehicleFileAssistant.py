@@ -13,15 +13,23 @@ import sys
 """Provides functions to parse and create certain files
 """
 class FileHandler():
-	def __init__(self, sign_up_list, class_list, output_dir):		
+	def __init__(self, sign_up_list, class_list, template_dir, output_dir):		
 		self.sign_up_list=sign_up_list
 		self.class_list=class_list
 		self.output_dir=output_dir
-		if not os.path.exists(output_dir):
-			os.makedirs(output_dir)
-
+		self.template_dir=template_dir
+		self.checkIfFilesExist()		
+			
+	def checkIfFilesExist(self):
+		list=[self.sign_up_list, self.class_list, self.template_dir]
+		for item in list:
+			if not os.path.exists(item):
+				raise Exception("File not found: {}".format(item))
+		if not os.path.exists(self.output_dir):
+			os.makedirs(self.output_dir)
+	
 	def create_veh_file(self,team):		
-		lines = [line.strip() for line in open(team.getCar()+".veh")]
+		lines = [line.strip() for line in open(self.template_dir+team.getCar()+".veh")]
 		linesNew = []
 		
 		for x in range(0,len(lines)):
@@ -68,6 +76,9 @@ class FileHandler():
 				car_name=lines[x].replace("Car=","")
 				if(not allowed_classes.car_nameIsAllowed(car_name, veh_class)):
 					raise Exception("unknown CarName: "+lines[x])
+				#validate if corresponding veh file exist
+				if(not os.path.isfile("{}.veh".format(self.template_dir+car_name))):
+					raise Exception(("{}.veh template does not exist".format(self.template_dir+car_name)))	
 			
 			if(lines[x].startswith("Team=")):
 				teamName=lines[x].replace("Team=","")
@@ -85,7 +96,7 @@ class FileHandler():
 		for x in range(0,len(lines)):
 			if(lines[x].startswith("Name=")):
 				name=lines[x].replace("Name=","").strip()
-				cars=[x.strip() for x in lines[x+1].replace("Cars=","").split(',')]
+				cars=[x.strip() for x in lines[x+1].replace("Cars=","").split(',')]						
 				numberOffset=int(lines[x+2].replace("NumberOffset=","").strip())
 				categoryPath=lines[x+3].replace("CategoryPath=","").strip()
 				classes=lines[x+4].replace("Classes=","").strip()
@@ -132,9 +143,7 @@ class Entry:
 		self.veh_class=veh_class
 		self.car=car
 		self.livery=livery
-		self.number=number
-		if(not os.path.isfile("{}.veh".format(car))):
-			raise Exception(("{}.veh template does not exist".format(car)))
+		self.number=number		
 		
 	def getVehClass(self):
 		return self.veh_class
@@ -177,37 +186,36 @@ class VehClassHandler:
 """Open and parse sign-up list and class list and then create .veh file for each team 
 """
 class VehFileCreator:
-	def __init__(self):
+	def __init__(self, sign_up_list, class_list, template_dir, output_dir):
 		self.print_startup_msg()
-		self.parse_args()
 		
-		fh=FileHandler(self.sign_up_list, self.class_list, self.output_dir)
+		fh=FileHandler(sign_up_list, class_list, template_dir, output_dir)
 		teams=fh.parse_signup_list(VehClassHandler(fh.parse_class_list()))
 
 		for x in range(0,len(teams)):
 			fh.create_veh_file(teams[x])
 		print("\nFinished successfully.")
 		
-	def parse_args(self):
-		if "-h" in sys.argv or "--help" in sys.argv:
-			self.usage()
-		self.sign_up_list=sys.argv[1] if (len(sys.argv) >1) else "signUpList.txt"
-		self.class_list=sys.argv[2] if (len(sys.argv) >2) else "classList.txt"
-		self.output_dir=sys.argv[3] if (len(sys.argv) >3) else "out/"
-		
-	def usage(self):
-		print("Usage: {} signupList.txt classList.txt out/".format(os.path.basename(sys.argv[0])))
-		print("or {} signupList.txt classList.txt".format(os.path.basename(sys.argv[0])))
-		print("or {} signupList.txt".format(os.path.basename(sys.argv[0])))
-		print("or {} ".format(os.path.basename(sys.argv[0])))		
-		sys.exit()
-		
 	def print_startup_msg(self):
 		version = 1.0
 		print("rFactor2 Vehicle File Assistant v{}".format(version))
-		print("by Dennis Coufal <dennis.coufal@gmail.com>")
 		print()
 		
 
-#main
-VehFileCreator()
+def main():
+	sign_up_list=sys.argv[1] if (len(sys.argv) >1) else "teamList.txt"
+	class_list=sys.argv[2] if (len(sys.argv) >2) else "classList.txt"
+	template_dir=sys.argv[3] if (len(sys.argv) >3) else "templates/"
+	output_dir=sys.argv[4] if (len(sys.argv) >4) else "out/"
+	
+	if "-h" in sys.argv or "--help" in sys.argv:
+		print("Usage:")
+		print(">>>{} teamList.txt classList.txt templates/ out/".format(os.path.basename(sys.argv[0])))
+		print("\nTo run with default settings, just use:")
+		print(">>>{} ".format(os.path.basename(sys.argv[0])))
+		print("\nIf you provide fewer arguments, default values will be used for undefined values")		
+		sys.exit()
+	
+	VehFileCreator(sign_up_list, class_list, template_dir, output_dir)
+if  __name__ =='__main__':main()
+	
