@@ -7,8 +7,8 @@ Useful to create skin packs for leagues or standalone mods
 ## Features 
 
 * automatically creates all files from easily editable lists
-* automatically assigns start numbers, supports offsets for different classes
-* you can also assign numbers manually (either for all cars or just for some)
+* automatically assigns start numbers and supports offsets for different classes
+* also allows to assign numbers manually (either for all cars or just for some)
 * unlimited amount of classes, teams and cars per class
 * user defined in-game filters
 
@@ -56,6 +56,14 @@ Now you can add as many teams as you like in your team list, using this structur
 	Livery=Filename3.dds
 	
 	[...]
+	
+To add a number for a certain car, just add the line *Numer=* after the *Livery=* line:
+
+	Class=LMP1
+	Car=Lola
+	Team=Car with a number
+	Livery=Filename4.dds
+	Number=77
 
 ## Prerequisites
 
