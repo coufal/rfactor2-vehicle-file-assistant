@@ -91,8 +91,8 @@ class FileHandler():
 				if(len(lines) > x+1 and lines[x+1].startswith("Number=")):
 					number=int(lines[x+1].replace("Number=",""))
 				else:
-					number=veh_class.get_start_number_counter()+1+veh_class.get_number_offset()
-					veh_class.inc_start_number_counter()
+					number=veh_class.get_number_counter()+veh_class.get_number_offset()
+					veh_class.inc_number_counter()
 					
 				teams.append(Entry(teamName, veh_class, car_name, livery, number))					
 			
@@ -120,13 +120,13 @@ class VehClass:
 		self.number_offset=number_offset
 		self.category_path=category_path
 		self.filtername_classes=filtername_classes
-		self.start_number_counter=0
+		self.number_counter=1 #the number to assign to cars automatically
 		
-	def inc_start_number_counter(self):
-		self.start_number_counter+=1
+	def inc_number_counter(self):
+		self.number_counter+=1
 		
-	def get_start_number_counter(self):
-		return self.start_number_counter
+	def get_number_counter(self):
+		return self.number_counter
 		
 	def get_category_path(self):
 		return self.category_path
