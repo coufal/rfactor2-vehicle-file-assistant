@@ -1,0 +1,52 @@
+//
+// The first section defines what maps to load for the new vehicle skinning
+// technology.  The first line defines a "prefix" to be used for all generic maps.
+// Currently, generic maps are used for the livery, wing, driver, driver arms,
+// driver helmet, and pit crew.  The second line will replace the default livery
+// with the new specified, for the track specified.  The format is as follows:
+//
+// DefaultLivery="PREFIX"       // PREFIX is the base texture map name, assumed to be BMP unless specified
+// PitCrewLivery="PREFIX"       // This is only needed if it differs from the default livery PREFIX
+// TrackLivery="TRACK, PREFIX"  // TRACK is the track name as defined in the event GDB
+// TrackLivery="TRACK, PREFIX"  // For example, "2001_Monza"
+// TrackLivery="TRACK, PREFIX"  // You can have an infinite # of these lines
+//
+
+DefaultLivery="FerEGT_52.dds"
+Extra0="window"      // Windows cockpit
+Extra1="BAN"      // Window banners
+Extra2="BAN"      // Cockpit banners
+Extra7="SW"    // steering wheel
+Extra8="DH"    // Driver arms
+Extra9="DH"    // Driver arms
+
+HDVehicle=URD_EGT_Ferruccio\FerEGT.hdv
+Graphics=URD_EGT_FerruccioT\FerEGT.gen
+Spinner=URD_EGT_Ferruccio\FerEGT_spinner.gen
+GenString=2                      // Used to generate GMT names in *.gen file
+Sounds=FerEGT_sounds.sfx                   // Sounds=default.sfx
+Cameras=FerEGT_cam.cam              // Defaults to default.cfg in UserData directory
+HeadPhysics=EGT5_HEADPHYSICS.ini      // Affects driver eyepoint only
+Cockpit=FerEGT_cockpitinfo.ini
+Upgrades=FerEGT_upgrades.ini
+
+Number=116
+Team="Team1"
+PitGroup="Group16"
+Driver="Jim Carrel"
+Description="Ferruccio EGT #52"
+Engine="4.4l V6"
+Manufacturer="Ferruccio"
+
+Classes="VWEC,VWEC_GTE"
+
+FullTeamName="Team1 Full"
+TeamFounded=
+TeamHeadquarters=""
+TeamStarts=246
+TeamPoles=81
+TeamWins=83
+TeamWorldChampionships=4
+
+Category="GTE"
+

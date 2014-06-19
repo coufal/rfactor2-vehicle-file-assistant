@@ -1,0 +1,13 @@
+#example file
+
+Name=GTE
+Cars=Ferrari, Aston, BMW, Corvette, Porsche, Dodge
+NumberOffset=100
+CategoryPath=VWEC, GTE
+Classes=VWEC, VWEC_GTE
+
+Name=LMP1
+Cars=Lola
+NumberOffset=0
+CategoryPath=VWEC, GTE
+Classes=VWEC, VWEC_GTE

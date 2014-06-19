@@ -1,0 +1,52 @@
+//
+// The first section defines what maps to load for the new vehicle skinning
+// technology.  The first line defines a "prefix" to be used for all generic maps.
+// Currently, generic maps are used for the livery, wing, driver, driver arms,
+// driver helmet, and pit crew.  The second line will replace the default livery
+// with the new specified, for the track specified.  The format is as follows:
+//
+// DefaultLivery="PREFIX"       // PREFIX is the base texture map name, assumed to be BMP unless specified
+// PitCrewLivery="PREFIX"       // This is only needed if it differs from the default livery PREFIX
+// TrackLivery="TRACK, PREFIX"  // TRACK is the track name as defined in the event GDB
+// TrackLivery="TRACK, PREFIX"  // For example, "2001_Monza"
+// TrackLivery="TRACK, PREFIX"  // You can have an infinite # of these lines
+//
+
+DefaultLivery="DarcheEGT_92.dds"
+Extra0="window"      // Windows cockpit
+Extra1="BAN"      // Window banners
+Extra2="BAN"      // Cockpit banners
+Extra7="SW"    // steering wheel
+Extra8="DH"    // Driver arms
+Extra9="DH"    // Driver arms
+
+HDVehicle=URD_EGT_Darche\DarcheEGT.hdv
+Graphics=URD_EGT_Darche\DarcheEGT.gen
+Spinner=URD_EGT_Darche\DarcheEGT_spinner.gen
+GenString=                       // Used to generate GMT names in *.gen file
+Sounds=DarcheEGT_sounds.sfx                   // Sounds=default.sfx
+Cameras=DarcheEGT_cam.cam              // Defaults to default.cfg in UserData directory
+HeadPhysics=EGT5_HEADPHYSICS.ini      // Affects driver eyepoint only
+Cockpit=DarcheEGT_cockpitinfo.ini
+Upgrades=DarcheEGT_upgrades.ini
+
+Number=92
+Team="Darche Racing"
+PitGroup="Group01"
+Driver="Dennis Lind"
+Description="DarcheEGT #92"
+Engine="4.4l V6"
+Manufacturer="Darche"
+
+Classes="EGT_Full, EGT_US, WEGT, Darche_EGT"
+
+FullTeamName="Darche Racing"
+TeamFounded=
+TeamHeadquarters=""
+TeamStarts=246
+TeamPoles=81
+TeamWins=83
+TeamWorldChampionships=4
+
+Category="EnduranceRacingX, EGT, Darche_EGT"
+

@@ -1,0 +1,16 @@
+#example file
+
+Class=GTE
+Car=Ferrari
+Team=Team Name 1
+Livery=Filename1.dds
+
+Class=GTE
+Car=Porsche
+Team=Team Name Two
+Livery=Filename2.dds
+
+Class=LMP1
+Car=Lola
+Team=Team Name Three
+Livery=Filename3.dds
