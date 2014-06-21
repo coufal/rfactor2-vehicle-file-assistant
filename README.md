@@ -26,7 +26,7 @@ For more details, simply run with the *-h* argument.
 
 ### File structure 
 
-The whole concept is fairly easy. First off all you create a class list file like this:
+The whole concept is fairly easy. First off all you create a `classList.txt` file like this:
 
 	Name=GTE
 	Cars=Ferrari, Aston, BMW, Corvette, Porsche, Dodge
@@ -43,7 +43,7 @@ The whole concept is fairly easy. First off all you create a class list file lik
 Then you need to place the .veh files of the cars you want to use in your templates directory.
 Name these files like the cars in your class list (e.g. *Ferrari.veh*)
 
-Now you can add as many teams as you like in your team list, using this structure:
+Now you can add as many teams as you like in your `teamList.txt`, using this structure:
 
 	Class=GTE
 	Car=Ferrari
