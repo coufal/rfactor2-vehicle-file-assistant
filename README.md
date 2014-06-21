@@ -67,4 +67,4 @@ To add a number for a certain car, just add the line *Number=* after the *Livery
 
 ## Prerequisites
 
-* Python 3.3 (other versions should work as well)
+* Python 3.3+
